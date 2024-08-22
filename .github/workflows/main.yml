@@ -1,18 +1,22 @@
 name: interview
 
 on:
-  pull_request
-    branches["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
   lint:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     
-    uses: actions/checkout@v4
-    uses: actions/setup-python@v4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v3
 
-    run: pip install pylint
-    run: pylint *.py
+      - name: install pylint dependencies
+        run: pip install pylint
+    
+      - name: run pylint
+        run: pylint *.py
     
     
 
