@@ -51,20 +51,7 @@ jobs:
         uses: github/codeql-action/analyze@v3
         with:
           category: "/language:${{matrix.language}}"
-  
-      
-      
-  
 
-  
-    
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: run codeQL
-      uses: actions/codeql-action@v3
-    
-    
 
     
 
