@@ -1,5 +1,6 @@
 """
-This Module Contains the NFL Roster class, which uses the espn api, to pull down a subset of player data.
+This Module Contains the NFL Roster class, which uses the espn api, 
+to pull down a subset of player data.
 
 Funtions are also provided that allows the user to:
 
@@ -81,7 +82,8 @@ class NFLRoster:
             Parameters
             ----------
             key: string
-                string value of the key representing the player in the data model that will be removed                           
+                string value of the key representing the player in the data model that will be 
+                removed                           
         """
         try:
             self.player_dict.pop(key)
@@ -109,6 +111,6 @@ class NFLRoster:
 if __name__ == "__main__":
     roster = NFLRoster(7)
     player_id_list = list(roster.player_dict.keys())
-    roster.set_age(player_id_list[4], 99) 
+    roster.set_age(player_id_list[4], 99)
     roster.delete_player(player_id_list[0])
     roster.write_roster()
