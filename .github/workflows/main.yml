@@ -56,7 +56,7 @@ jobs:
           category: "/language:${{matrix.language}}"
     
   uploadArtifact:
-      #needs: [lint, codeQl]
+      needs: [lint, codeQl]
       runs-on: ubuntu-latest
 
       steps:
