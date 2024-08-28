@@ -1,5 +1,6 @@
-import requests
 import json
+import requests
+
 
 
 class NFLRoster:
@@ -35,7 +36,7 @@ class NFLRoster:
             x: int. optional
                 total number of players to fetch from ESPN API, if not provided defaults to 5
         """
-        
+
         if x > 1 :
             parameters = {'limit': x,}
 
@@ -54,22 +55,44 @@ class NFLRoster:
             raise ValueError("x must be greater than 0 to run")
 
     def set_age(self,key, age):
+        """
+            Parameters
+            ----------
+            key: string
+                string value of the key representing the player in the data model
+            age: int
+                numeric value that will be used to overwrite the players age                
+        """
         try:
             self.player_dict[key]['age'] = age
         except KeyError:
             print(f"The key: {key}, is not found in the dictionary, the age has not been udpated")
 
     def delete_player(self, key):
+        """
+            Parameters
+            ----------
+            key: string
+                string value of the key representing the player in the data model that will be removed                           
+        """
         try:
             self.player_dict.pop(key)
         except KeyError:
             print(f"The key: {key}, is not found in the dictionary, nothing has been deleted")
 
     def print_roster(self):
+        """
+            Parameters N/A
+            ----------
+        """
         for items in self.player_dict:
             print(items)
 
     def write_roster(self):
+        """
+            Parameters N/A
+            ----------
+        """
         file_name = "./player_roster.json"
 
         with open(file_name, 'w', encoding="utf-8")  as file:
@@ -77,10 +100,7 @@ class NFLRoster:
 
 if __name__ == "__main__":
     roster = NFLRoster(7)
-    print("stop here")
     player_id_list = list(roster.player_dict.keys())
-    roster.set_age(player_id_list[4], 99)  #To Do: Array index out of bound?
-    
-    roster.delete_player(player_id_list[0]) #To Do: Array index out of bound?
+    roster.set_age(player_id_list[4], 99) 
+    roster.delete_player(player_id_list[0])
     roster.write_roster()
-    print("next stop")
