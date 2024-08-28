@@ -1,3 +1,14 @@
+"""
+This Module Contains the NFL Roster class, which uses the espn api, to pull down a subset of player data.
+
+Funtions are also provided that allows the user to:
+
+    Manipulate the players age in the object
+    Delete a player from the data object
+    Print the data object
+    Save the data object to a file
+"""
+
 import json
 
 import requests
