@@ -1,8 +1,6 @@
 import json
 import requests
 
-
-
 class NFLRoster:
     """An interface to pull and minupulate football player data from ESPN api
     
@@ -24,7 +22,6 @@ class NFLRoster:
     write_roster():
         write player_dict to a file ./player_roster.txt
     """
-    
     #class attributes
     base_url = " https://sports.core.api.espn.com/v2/sports/football/leagues/nfl\
         /seasons/2023/teams/18/athletes"
@@ -36,7 +33,6 @@ class NFLRoster:
             x: int. optional
                 total number of players to fetch from ESPN API, if not provided defaults to 5
         """
-
         if x > 1 :
             parameters = {'limit': x,}
 
