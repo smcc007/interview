@@ -1,4 +1,5 @@
 import json
+
 import requests
 
 class NFLRoster:
@@ -36,13 +37,13 @@ class NFLRoster:
         if x > 1 :
             parameters = {'limit': x,}
 
-            response = requests.get(type(self).base_url, params= parameters)
+            response = requests.get(type(self).base_url, params= parameters, timeout=25)
 
             if response.status_code == 200:  # Code is okay
                 self.player_dict = {}
                 json_rsp = response.json()
                 for item in json_rsp['items']:
-                    player_response = requests.get(item['$ref']).json()
+                    player_response = requests.get(item['$ref'],timeout=25).json()
                     self.player_dict[player_response['id']] = player_response
             else:
                 raise RuntimeError("API call failed")
