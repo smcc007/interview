@@ -51,6 +51,23 @@ jobs:
         uses: github/codeql-action/analyze@v3
         with:
           category: "/language:${{matrix.language}}"
+    
+  uploadArtifact:
+      needs: [lint, codeQl]
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/upload_artifact@v4
+          with:
+            name: player_roster
+
+            path: ./player_roster.json
+
+            if-no-files-found: error 
+            
+            overwrite: true
+
+
 
 
     
